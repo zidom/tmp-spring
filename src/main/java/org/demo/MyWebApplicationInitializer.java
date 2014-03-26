@@ -18,16 +18,13 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer {
 	@Override
 	public void onStartup(ServletContext container) {
 
-		XmlWebApplicationContext applicationContext = new XmlWebApplicationContext();
-		applicationContext
-				.setConfigLocation("classpath:spring/application-config.xml");
+		XmlWebApplicationContext appContext = new XmlWebApplicationContext();
+		appContext.setConfigLocation("/WEB-INF/mvc-config.xml");
 
-		DispatcherServlet dispatcher = new DispatcherServlet(applicationContext);
-		dispatcher.setContextConfigLocation("/WEB-INF/mvc-config.xml");
+		ServletRegistration.Dynamic dispatcher = container.addServlet(
+				"dispatcher", new DispatcherServlet(appContext));
 
-		ServletRegistration.Dynamic registration = container.addServlet(
-				"dispatcher", dispatcher);
-		registration.setLoadOnStartup(1);
-		registration.addMapping("/*");
+		dispatcher.setLoadOnStartup(1);
+		dispatcher.addMapping("/*");
 	}
 }
