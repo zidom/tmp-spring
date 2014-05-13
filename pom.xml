@@ -41,7 +41,9 @@
 
 		<!-- Hibernate / JPA -->
 		<hibernate.version>4.3.4.Final</hibernate.version>
-
+		
+		<!-- reactor -->
+		<reactor.version>1.1.0.RELEASE</reactor.version>
 		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
@@ -160,6 +162,11 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.5.2.RELEASE</version>
+		</dependency>
 		<!-- Spring MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -214,6 +221,35 @@
 			<artifactId>spring-batch-core</artifactId>
 			<version>${spring-batch.version}</version>
 		</dependency>
+		
+		 <!-- core components -->
+		<dependency>
+			<groupId>org.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+			<version>${reactor.version}</version>
+		</dependency>
+
+    	<!-- groovy support -->
+		<dependency>
+			<groupId>org.projectreactor</groupId>
+			<artifactId>reactor-groovy</artifactId>
+			<version>${reactor.version}</version>
+		</dependency>
+
+    	<!-- tcp client/server -->
+		<dependency>
+			<groupId>org.projectreactor</groupId>
+			<artifactId>reactor-tcp</artifactId>
+			<version>${reactor.version}</version>
+		</dependency>
+
+    	<!-- spring support -->
+		<dependency>
+			<groupId>org.projectreactor</groupId>
+			<artifactId>reactor-spring</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
