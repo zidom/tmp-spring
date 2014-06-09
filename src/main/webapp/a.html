@@ -1,0 +1,102 @@
+<script type="text/javascript">
+	function formValidate() {
+		var username = $("#username").val();
+		var password = $("#password").val();
+		if (flag == "") {
+			$("#ti_shi").html("<font color='red'>请选择企业用户或个人用户</font>")
+			return false;
+		}
+		if (platform == "zsb") {
+			if (username.trimAll() == "企业名称/组织机构代码/企业编码") {
+				$("#ti_shi").html("<font color='red'>请输入用户名</font>")
+				return false;
+			}
+		} else {
+			if (username.trimAll() == "企业名称/组织机构代码/用户ID") {
+				$("#ti_shi").html("<font color='red'>请输入用户名</font>")
+				return false;
+			}
+		}
+		if (username.hasSpace()) {
+			$("#ti_shi").html("<font color='red'>用户名不能有空格,请重新输入</font>")
+			return false;
+		}
+		if (password.trimAll() == "") {
+			$("#ti_shi").html("<font color='red'>请输入密码</font>")
+			return false;
+		}
+		$("#password2").val(hex_md5(password));
+		$("#flag").val(flag);
+		return true;
+	}
+	function changeSrc() {
+		$("#code").attr("src",
+				"${ctx}/user/checkcode.action?a=" + new Date().getTime());
+	}
+	function changeText(str) {
+		if (str == "qy") {
+			$("#c2")[0].checked = false;
+			if ($("#c1")[0].checked) {
+				flag = "qy";
+			}
+		} else {
+			$("#c1")[0].checked = false;
+			if ($("#c2")[0].checked) {
+				flag = "gr";
+			}
+		}
+		if (!$("#c1")[0].checked && !$("#c2")[0].checked) {
+			flag = "";
+		} else {
+			$("#ti_shi").html("<font color='red'></font>")
+		}
+	}
+	//检测大小写键
+	function detectCaps(event, id) {
+		if (!id) {
+			id = "ti_shi";
+		}
+		var keyCode = event.keyCode || event.which; // 按键的keyCode   
+		var isShift = event.shiftKey || (keyCode == 16) || false; // shift键是否按住 
+		if (((keyCode >= 65 && keyCode <= 90) && !isShift) // Caps Lock 打开，且没有按住shift键 
+				|| ((keyCode >= 97 && keyCode <= 122) && isShift) // Caps Lock 打开，且按住shift键 
+		) {
+			$("#" + id).html("<font color='red'>大写被锁定,请注意大小写</font>")
+		} else {
+			$("#" + id).html("")
+		}
+	}
+</script>
+<form method="post" action="${ctx}/j_spring_security_check"
+	onsubmit="return formValidate()">
+	<label>用户名</label>
+	<input id="flag" type="hidden" name="flag" />
+	<input id="username" type="text" name="j_username" tabindex="1"
+		autocomplete="off" />
+	<label>密&emsp;码</label>
+	<input id="password" type="password" tabindex="2" autocomplete="off"
+		onkeypress="detectCaps(event)" />
+	<input id="password2" type="hidden" name="j_password" />
+
+	<div id="c_div" class="span5" style="width: 450px;" align="center">
+		<input type="checkbox" id="c1" tabindex="5" onclick="changeText('qy')" />
+		企业用户 &nbsp;&nbsp;
+		<input type="checkbox" style="margin: auto;" id="c2" tabindex="6"
+			onclick="changeText('gr')" />
+		个人用户&nbsp;&nbsp;
+		<a href="${ctx}/views/regist/repassword.jsp" tabindex="7">忘记密码?</a>
+	</div>
+	<img id="code" src="${ctx}/user/checkcode.action" class="input-small"
+		style="height: 25px;">
+	<span class="img_text" onclick="changeSrc()" tabindex="4">
+		看不清<br>换一张
+	</span>
+	<label>验证码</label>
+	<input id="checkCode" class="input-small" type="text" name="checkCode"
+		tabindex="3" autocomplete="off" maxlength="4" />
+	<input id="btn-submit" type="submit" class="btn-login" tabindex="8"
+		value="登  录">
+	<div style="text-align: right; height: 25px; width: 300px;">
+		<span id="ti_shi"> </span>
+	</div>
+</form>

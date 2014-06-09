@@ -1,6 +1,4 @@
-<project
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.samples.service.service</groupId>
@@ -28,7 +26,7 @@
 
 		<!-- Spring -->
 		<spring-framework.version>3.2.8.RELEASE</spring-framework.version>
-		<spring-security.version>3.0.2.RELEASE</spring-security.version>
+		<spring-security.version>3.2.4.RELEASE</spring-security.version>
 		<spring-intergration.verion>3.0.1.RELEASE</spring-intergration.verion>
 		<spring-batch.version>2.2.5.RELEASE</spring-batch.version>
 
@@ -43,7 +41,7 @@
 		<hibernate.version>4.3.4.Final</hibernate.version>
 		
 		<!-- reactor -->
-		<reactor.version>1.1.0.RELEASE</reactor.version>
+		<reactor.version>1.1.2.RELEASE</reactor.version>
 		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
@@ -92,6 +90,11 @@
 			<groupId>com.atomikos</groupId>
 			<artifactId>transactions-hibernate3</artifactId>
 			<version>3.9.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lmax</groupId>
+			<artifactId>disruptor</artifactId>
+			<version>3.2.1</version>
 		</dependency>
             
 		<!-- ActivJPA -->
@@ -189,11 +192,11 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring-security.version}</version>
 		</dependency>
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-crypto</artifactId>
 			<version>${spring-security.version}</version>
-			</dependency> -->
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -236,12 +239,6 @@
 			<version>${reactor.version}</version>
 		</dependency>
 
-    	<!-- tcp client/server -->
-		<dependency>
-			<groupId>org.projectreactor</groupId>
-			<artifactId>reactor-tcp</artifactId>
-			<version>${reactor.version}</version>
-		</dependency>
 
     	<!-- spring support -->
 		<dependency>
@@ -379,7 +376,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>15.0</version>
+			<version>17.0</version>
 		</dependency>
 
 
