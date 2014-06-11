@@ -64,6 +64,37 @@
 	</repositories>
 
 	<dependencies>
+		<!-- 加密解密  -->
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcpg-jdk15on</artifactId>
+			<version>1.50</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-ext-jdk15on</artifactId>
+			<version>1.50</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk15on</artifactId>
+			<version>1.50</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcpkix-jdk15on</artifactId>
+			<version>1.50</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcmail-jdk15on</artifactId>
+			<version>1.50</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
 		<!-- groovy -->
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
@@ -96,7 +127,11 @@
 			<artifactId>disruptor</artifactId>
 			<version>3.2.1</version>
 		</dependency>
-            
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>inject</artifactId>
+			<version>1.0</version>
+		</dependency>
 		<!-- ActivJPA -->
 		<dependency>
 			<groupId>org.activejpa</groupId>
